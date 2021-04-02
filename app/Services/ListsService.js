@@ -10,7 +10,9 @@ class ListsService {
     console.log("submitList from ListsService")
   }
 
-
+  deleteList(listId) {
+    ProxyState.lists = ProxyState.lists.filter(l => l.listId != listId)
+  }
 
 }
 

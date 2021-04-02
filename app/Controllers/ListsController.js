@@ -18,6 +18,7 @@ function _draw() {
 export default class ListsController {
   constructor() {
     ProxyState.on('lists', _draw)
+    ProxyState.on('tasks', _draw)
     _draw()
   }
 
@@ -32,7 +33,9 @@ export default class ListsController {
     console.log("submitList button from ListsController")
   }
 
-
+  deleteList(listId) {
+    listsService.deleteList(listId)
+  }
 
 
 }
