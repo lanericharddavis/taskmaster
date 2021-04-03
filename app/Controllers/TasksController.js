@@ -8,7 +8,8 @@ import { tasksService } from "../Services/TasksService.js"
 //PUBLIC
 export default class TasksController {
 
-  submitTask(taskId) {
+  submitTask() {
+    debugger
     window.event.preventDefault()
     let form = window.event.target
     let taskElement = {

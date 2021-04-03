@@ -11,7 +11,7 @@ export default class List {
   get Template() {
 
     return /*html*/`
-            <div class="col-4 m-3">
+            <div class="col-12 m-3">
                 <div class="card">
                     <div class="card-header text-center bg-${this.color}">
                         <h4>${this.title}</h4>
@@ -24,9 +24,8 @@ export default class List {
                         </ul>
                         <form class="col d-flex justify-content-center my-3" onsubmit="app.tasksController.submitTask()">
                             <div class="input-group mb-3 justify-content-between">
-                                <input type="text" name="taskElement" class="form-control" placeholder="Task Item To Do..."
-                                    aria-label="Your Task" aria-describedby="button-addon2" required min="2"
-                                    max="15">
+                                <input type="text" name="taskItem" for="taskItem" id="taskItem" class="form-control" placeholder="Your Task Here..."
+                                  aria-describedby="helpId" required min="2" max="15">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-info" title='add list'><i class="fas fa-plus"></i></button>
                                 </div>
@@ -39,7 +38,7 @@ export default class List {
   }
 
   get Tasks() {
-    let thetasks = ProxyState.tasks.filter(t => t.taskId === this.id)
+    let thetasks = ProxyState.tasks.filter(t => t.taskId === this.taskid)
     let template = ''
     thetasks.forEach(t => template += t.Template)
     return template
