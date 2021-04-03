@@ -2,9 +2,10 @@ import { ProxyState } from "../AppState.js"
 import { generateId } from "../Utils/GenerateId.js"
 
 export default class List {
-  constructor(name, color, id = generateId()) {
+  constructor(name, color, taskCount, id = generateId()) {
     this.name = name
     this.color = color
+    this.taskCount = taskCount
     this.id = id
   }
 
@@ -18,7 +19,7 @@ export default class List {
                         <i class="fas fa-trash-alt ml-2" onclick="app.listsController.deleteList('${this.id}')"></i>
                     </div>
                     <div class="text-center">
-                    <p>${ProxyState.taskCount} /${ProxyState.taskCount}</p>
+                    <p>${this.taskCount} / ${this.taskCount}</p>
                     </div>
                     <div class="p-3">
                         <ul>

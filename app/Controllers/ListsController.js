@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { listsService } from "../Services/ListsService.js"
 import { tasksService } from "../Services/TasksService.js"
+import { loadState } from "../Utils/LocalStorage.js"
 
 
 
@@ -22,6 +23,7 @@ export default class ListsController {
     ProxyState.on('lists', _draw)
     ProxyState.on('tasks', _draw)
     ProxyState.on('taskCount', _draw)
+    loadState()
     _draw()
   }
 

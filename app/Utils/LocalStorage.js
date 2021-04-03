@@ -1,19 +1,19 @@
 import { ProxyState } from "../AppState.js";
-import Ingredient from "../Models/Ingredient.js";
-import Pizza from "../Models/Pizza.js";
+import Task from "../Models/Task.js";
+import List from "../Models/List.js";
 
 
 export function saveState() {
-  localStorage.setItem('pizzashack', JSON.stringify({
-    pizzas: ProxyState.pizzas,
-    ingredients: ProxyState.ingredients
+  localStorage.setItem('taskmaster', JSON.stringify({
+    lists: ProxyState.lists,
+    tasks: ProxyState.tasks
   }))
 }
 
 export function loadState() {
-  let data = JSON.parse(localStorage.getItem('pizzashack'))
+  let data = JSON.parse(localStorage.getItem('taskmaster'))
   if (data) {
-    ProxyState.pizzas = data.pizzas.map(pizza => new Pizza(pizza.name, pizza.size, pizza.id));
-    ProxyState.ingredients = data.ingredients.map(ing => new Ingredient(ing.name, ing.pizzaId, ing.id));
+    ProxyState.lists = data.lists.map(listElement => new List(listElement.name, listElement.color, listElement.id));
+    ProxyState.tasks = data.tasks.map(taskElement => new Task(taskElement.taskItem, taskElement.listId, taskElement.id));
   }
 }
