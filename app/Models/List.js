@@ -18,7 +18,7 @@ export default class List {
                         <i class="fas fa-trash-alt ml-2" onclick="app.listsController.deleteList('${this.id}')"></i>
                     </div>
                     <div class="text-center">
-                    <p>NumberofCompletedTasks /${ProxyState.taskCount}</p>
+                    <p>${ProxyState.taskCount} /${ProxyState.taskCount}</p>
                     </div>
                     <div class="p-3">
                         <ul>

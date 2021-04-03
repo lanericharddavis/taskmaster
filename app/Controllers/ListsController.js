@@ -33,13 +33,13 @@ export default class ListsController {
       color: form['color'].value,
     }
     listsService.submitList(listElement)
-    console.log("submitList button from ListsController")
+    console.log("ListSubmit from ListsController")
     form.reset()
   }
 
-  deleteList(listId) {
+  deleteList(id) {
     if (window.confirm("Are You Sure You Want To Delete This List?")) {
-      listsService.deleteList(listId);
+      listsService.deleteList(id);
     }
   }
 

@@ -16,6 +16,7 @@ export default class TasksController {
       taskItem: form['taskItem'].value,
       listId: listId
     }
+    console.log("TaskSubmit from TasksController")
     tasksService.submitTask(taskElement)
   }
 
