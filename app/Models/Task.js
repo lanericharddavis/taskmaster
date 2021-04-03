@@ -1,21 +1,23 @@
 import { generateId } from "../Utils/GenerateId.js"
 
 export default class Task {
-  constructor(taskItem, taskId = generateId()) {
-    this.taskId = taskId
+  constructor(taskItem, listId, id = generateId()) {
+    this.id = id
+    this.listId = listId
     this.taskItem = taskItem
   }
 
   get Template() {
     return `
-          <li class="list-group-item d-flex">
-              <div class="form-check justify-content-between">
-                <label class="form-check-label justify-content-between">
-                   <input class="checkbox" type="checkbox"><p>${this.taskItem}</p>
-                </label>
-              </div>
-              <button onclick="app.tasksController.deleteTask('${this.taskId}')" type="delete" class="btn btn-info" title='add list'><i class="fas fa-trash-alt"></i></button>
-          </li>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+           <p>${this.taskItem} <i class="fas fa-times ml-2 text-danger" onclick="app.tasksController.deleteTask('${this.id}')"></i></p>
+        </label>
+      </div>
+
+
+      
     `
   }
 

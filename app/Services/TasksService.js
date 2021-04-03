@@ -6,13 +6,17 @@ import Task from "../Models/Task.js"
 class TasksService {
 
   submitTask(taskElement) {
-    ProxyState.tasks.push(new Task(taskElement.name, taskElement.color))
-    console.log("submitTask from TasksService")
+
+    ProxyState.tasks.push(new Task(taskElement.taskItem, taskElement.listId))
+    console.log(taskElement.taskItem, taskElement.listId)
     ProxyState.tasks = ProxyState.tasks
   }
 
-  deleteTask(taskId) {
-    ProxyState.tasks = ProxyState.tasks.filter(t => t.taskId != taskId)
+  deleteTask(id) {
+    let taskCount = ProxyState.taskCount
+    ProxyState.tasks = ProxyState.tasks.filter(t => t.id != id)
+    console.log('deleteTask from TaskService')
+    ProxyState.tasks = ProxyState.tasks
   }
 
 }

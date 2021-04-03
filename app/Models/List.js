@@ -2,46 +2,53 @@ import { ProxyState } from "../AppState.js"
 import { generateId } from "../Utils/GenerateId.js"
 
 export default class List {
-  constructor(title, color, listId = generateId()) {
-    this.listId = listId
-    this.title = title
+  constructor(name, color, id = generateId()) {
+    this.name = name
     this.color = color
+    this.id = id
   }
 
   get Template() {
 
     return /*html*/`
-            <div class="col-12 m-3">
-                <div class="card">
-                    <div class="card-header text-center bg-${this.color}">
-                        <h4>${this.title}</h4>
-                        <button type="delete" onclick="app.listsController.deleteList('${this.listId}')" class="btn btn-info" title='add list'><i class="fas fa-trash-alt"></i></button>
-                        <p>task#completed / total#tasks</p>
+            <div class="col-md-4">
+                <div class="list-card shadow bg-white rounded">
+                    <div class="text-center bg-${this.color} p-2 d-flex justify-content-between">
+                        <h3>${this.name}</h3>
+                        <i class="fas fa-trash-alt ml-2" onclick="app.listsController.deleteList('${this.id}')"></i>
                     </div>
-                    <div class="card-body">
-                        <ul id="newTaskItem" class="list-group">
+                    <div class="text-center">
+                    <p>NumberofCompletedTasks /${ProxyState.taskCount}</p>
+                    </div>
+                    <div class="p-3">
+                        <ul>
                             ${this.Tasks}
                         </ul>
-                        <form class="col d-flex justify-content-center my-3" onsubmit="app.tasksController.submitTask()">
-                            <div class="input-group mb-3 justify-content-between">
-                                <input type="text" name="taskItem" for="taskItem" id="taskItem" class="form-control" placeholder="Your Task Here..."
-                                  aria-describedby="helpId" required min="2" max="15">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-info" title='add list'><i class="fas fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
+                    <form class="d-flex p-2" onsubmit="app.tasksController.submitTask('${this.id}')">
+                        <input type="text" name="taskItem" id="taskId" class="form-control"
+                            placeholder="What task do you want to put off until later..." aria-describedby="helpId" required min="2" max="15">
+                        <button type="submit" class="btn btn-success" title='submit task to this list'><i
+                                class="fas fa-plus"></i></button>
+                    </form>
                 </div>
             </div>
-            `
+              `
   }
 
   get Tasks() {
-    let thetasks = ProxyState.tasks.filter(t => t.taskId === this.taskid)
+    let thetask = ProxyState.tasks.filter(t => t.listId === this.id)
     let template = ''
-    thetasks.forEach(t => template += t.Template)
+    thetask.forEach(t => template += t.Template)
     return template
   }
+
+
+
+  //   let lists = ProxyState.lists
+  // let template = ''
+  // lists.forEach(l => template += l.Template)
+  // document.getElementById("newBlankList").innerHTML = template
+
 
 }

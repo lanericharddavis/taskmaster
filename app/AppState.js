@@ -9,6 +9,8 @@ class AppState extends EventEmitter {
 
   /** @type {Task[]} */
   tasks = []
+
+  taskCount = 0
 }
 
 

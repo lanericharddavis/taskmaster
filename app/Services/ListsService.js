@@ -7,7 +7,6 @@ class ListsService {
 
   submitList(listElement) {
     ProxyState.lists = [...ProxyState.lists, new List(listElement.name, listElement.color)]
-    console.log("submitList from ListsService")
   }
 
   deleteList(listId) {
