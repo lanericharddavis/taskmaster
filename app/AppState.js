@@ -10,7 +10,6 @@ class AppState extends EventEmitter {
   /** @type {Task[]} */
   tasks = []
 
-
 }
 
 

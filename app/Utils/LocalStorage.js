@@ -8,13 +8,14 @@ export function saveState() {
     lists: ProxyState.lists,
     tasks: ProxyState.tasks
   }))
+
 }
 
-// Reloading the page from local storage is loading the list, but not the tasks within it.  However, it displays in the inspectors Application that local storage is saving old listIds and reflecting that number on my counter below the lists name on the screen
+// When page refresh happens, the tasks inside the list are no longer displayed on the list, however, they are still reflected as being stored on local storage and now because they are not displayed on screen, have no way of being deleting.
 export function loadState() {
   let data = JSON.parse(localStorage.getItem('taskmaster'))
   if (data) {
-    ProxyState.lists = data.lists.map(listElement => new List(listElement.name, listElement.color, listElement.id, listElement.taskCount));
+    ProxyState.lists = data.lists.map(listElement => new List(listElement.name, listElement.color, listElement.taskCount, listElement.id));
     ProxyState.tasks = data.tasks.map(taskElement => new Task(taskElement.taskItem, taskElement.listId, taskElement.id));
   }
 }

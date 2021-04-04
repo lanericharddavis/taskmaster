@@ -9,15 +9,14 @@ class TasksService {
   submitTask(taskElement) {
 
     ProxyState.tasks.push(new Task(taskElement.taskItem, taskElement.listId))
-    saveState()
     ProxyState.tasks = ProxyState.tasks
     console.log(taskElement.taskItem)
+    saveState()
   }
 
   deleteTask(id) {
     ProxyState.tasks = ProxyState.tasks.filter(t => t.id != id)
     console.log('deleteTask from TaskService')
-    ProxyState.tasks = ProxyState.tasks
     saveState()
   }
 

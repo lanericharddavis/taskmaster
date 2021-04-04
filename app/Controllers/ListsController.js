@@ -24,6 +24,7 @@ export default class ListsController {
     ProxyState.on('lists', _draw)
     ProxyState.on('tasks', _draw)
     // ProxyState.on('taskCount', _draw)
+
     loadState()
     _draw()
   }
@@ -38,9 +39,8 @@ export default class ListsController {
     let listElement = {
       name: form['name'].value,
       color: form['color'].value,
-      // I'm confused on how to make the List's taskCount parameter reflect this specifics list's number of tasks
-
-      // taskCount: currentList
+      // I'm confused on how to make the List's taskCount parameter reflect this specifics list's number of task
+      taskCount: ProxyState.tasks.length
     }
     listsService.submitList(listElement)
     console.log("ListSubmit from ListsController")

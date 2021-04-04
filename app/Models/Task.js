@@ -15,9 +15,6 @@ export default class Task {
            <p>${this.taskItem} <i class="fas fa-times ml-2 text-danger" onclick="app.tasksController.deleteTask('${this.id}')"></i></p>
         </label>
       </div>
-
-
-      
     `
   }
 
