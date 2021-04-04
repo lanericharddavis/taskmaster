@@ -28,7 +28,7 @@ export default class List {
                     </div>
                     <form class="d-flex p-2" onsubmit="app.tasksController.submitTask('${this.id}')">
                         <input type="text" name="taskItem" id="taskId" class="form-control"
-                            placeholder="What task do you want to put off until later..." aria-describedby="helpId" required min="2" max="15">
+                            placeholder="Insert Task Here..." aria-describedby="helpId" required minlength="3" maxlength="50">
                         <button type="submit" class="btn btn-success" title='submit task to this list'><i
                                 class="fas fa-plus"></i></button>
                     </form>
