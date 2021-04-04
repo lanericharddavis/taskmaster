@@ -35,6 +35,7 @@ export default class ListsController {
       color: form['color'].value,
     }
     listsService.submitList(listElement)
+    taskCounter()
     console.log("ListSubmit from ListsController")
     form.reset()
   }
@@ -45,5 +46,14 @@ export default class ListsController {
     }
   }
 
+  // taskCounter() {
+  //   if (submitTask) {
+  //     listsService.taskCounter()
+  //   }
+
+  //   if (deleteTask) {
+  //     listsService.deleteTask()
+  //   }
+  // }
 
 }

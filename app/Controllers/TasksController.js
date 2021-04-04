@@ -27,15 +27,5 @@ export default class TasksController {
 
   }
 
-  // taskCounter() {
-  //   if (submitTask()) {
-  //     taskCount++
-  //   }
-
-  //   if (deleteTask()) {
-  //     taskCount--
-  //   }
-  // }
-
 
 }
