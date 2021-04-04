@@ -19,7 +19,7 @@ export default class List {
                         <i class="fas fa-trash-alt ml-2" onclick="app.listsController.deleteList('${this.id}')"></i>
                     </div>
                     <div class="text-center">
-                    <p>${this.taskCount} / ${this.taskCount}</p>
+                    <p> 0 / ${this.taskCount}</p>
                     </div>
                     <div class="p-3">
                         <ul>

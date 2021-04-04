@@ -6,7 +6,7 @@ import { saveState } from "../Utils/LocalStorage.js"
 class ListsService {
 
   submitList(listElement) {
-    ProxyState.lists = [...ProxyState.lists, new List(listElement.name, listElement.color)]
+    ProxyState.lists = [...ProxyState.lists, new List(listElement.name, listElement.color, listElement.taskCount)]
     console.log(listElement.name, listElement.id)
     saveState()
   }

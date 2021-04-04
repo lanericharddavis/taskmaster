@@ -2,9 +2,9 @@ import { generateId } from "../Utils/GenerateId.js"
 
 export default class Task {
   constructor(taskItem, listId, id = generateId()) {
-    this.id = id
-    this.listId = listId
     this.taskItem = taskItem
+    this.listId = listId
+    this.id = id
   }
 
   get Template() {

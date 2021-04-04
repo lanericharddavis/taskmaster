@@ -18,6 +18,7 @@ export default class TasksController {
     }
     console.log("TaskSubmit from TasksController")
     tasksService.submitTask(taskElement)
+    form.reset()
   }
 
   deleteTask(id) {
