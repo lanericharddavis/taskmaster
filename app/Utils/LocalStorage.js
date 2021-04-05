@@ -11,7 +11,7 @@ export function saveState() {
 
 }
 
-// When page refresh happens, the tasks inside the list are no longer displayed on the list, however, they are still reflected as being stored on local storage and now because they are not displayed on screen, have no way of being deleting.
+// If a List is deleted with Tasks inside, they are deleted on screen, however, those tasks stay in localstorage and become part of the "taskCount"
 export function loadState() {
   let data = JSON.parse(localStorage.getItem('taskmaster'))
   if (data) {

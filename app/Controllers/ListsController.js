@@ -20,11 +20,10 @@ function _draw() {
 //PUBLIC
 export default class ListsController {
   constructor() {
-
+    //  NOT SURE WHY MY TASKSCOUNT INDICATOR ON THE HTML ISN'T UPDATED WHEN A NEW TASK IS ADDED.
     ProxyState.on('lists', _draw)
+    // Shouldn't this ProxyState.on 'tasks' look for updates to everything in the 'tasks' array?
     ProxyState.on('tasks', _draw)
-    // ProxyState.on('taskCount', _draw)
-
     loadState()
     _draw()
   }
@@ -35,7 +34,7 @@ export default class ListsController {
 
     // Trying to find the list's id so I can display a number of tasks for that specific list (instead of total tasks for all lists.)
 
-    // let currentList = ProxyState.lists.find(ProxyState.lists => ProxyState.listslistsElement.id == ProxyState.listslistsElement.id)
+    // let currentList = ProxyState.lists.find(listid => listslistsElement.id === listslistsElement.id)
     let listElement = {
       name: form['name'].value,
       color: form['color'].value,
@@ -48,10 +47,21 @@ export default class ListsController {
   }
 
   deleteList(id) {
-    if (window.confirm("Are You Sure You Want To Delete This List?")) {
-      listsService.deleteList(id);
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          listsService.deleteList(id),
+          'Deleted!'
+        )
+      }
+    })
   }
-
-
 }

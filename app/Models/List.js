@@ -11,6 +11,8 @@ export default class List {
 
   get Template() {
 
+    // COMPLETE DYNAMIC #TASKSCOMPLETED UPDATER AFTER CHECKBOX SOLUTION
+
     return /*html*/`
             <div class="col-md-4">
                 <div class="list-card shadow bg-white rounded">
@@ -19,7 +21,7 @@ export default class List {
                         <i class="fas fa-trash-alt ml-2" onclick="app.listsController.deleteList('${this.id}')"></i>
                     </div>
                     <div class="text-center">
-                    <p> 0 / ${this.taskCount}</p>
+                    <p> #tasksCompleted / ${this.taskCount}</p>
                     </div>
                     <div class="p-3">
                         <ul>

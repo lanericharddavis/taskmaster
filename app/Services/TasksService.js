@@ -8,7 +8,7 @@ class TasksService {
 
   submitTask(taskElement) {
 
-    ProxyState.tasks.push(new Task(taskElement.taskItem, taskElement.listId))
+    ProxyState.tasks.push(new Task(taskElement.taskItem, taskElement.listId, taskElement.taskCompletion))
     ProxyState.tasks = ProxyState.tasks
     console.log(taskElement.taskItem)
     saveState()
